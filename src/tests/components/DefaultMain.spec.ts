@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import DefaultMain from '@/components/DefaultMain.vue';
+import DefaultMain from '../../components/DefaultMain.vue';
 import { mount } from '@vue/test-utils';
 
 describe('DefaultMain', () => {

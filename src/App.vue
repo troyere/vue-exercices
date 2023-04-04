@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DefaultHeader from '@/components/DefaultHeader.vue';
+import DefaultHeader from './components/DefaultHeader.vue';
 import type { RouteLocationRaw } from 'vue-router';
 import { RouterView } from 'vue-router';
 

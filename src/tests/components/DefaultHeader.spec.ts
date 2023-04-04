@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import DefaultHeader from '@/components/DefaultHeader.vue';
+import DefaultHeader from '../../components/DefaultHeader.vue';
 import type { RouteLocationRaw } from 'vue-router';
 import { mount } from '@vue/test-utils';
-import router from '@/router';
+import router from '../../router';
 
 describe('DefaultHeader', () => {
   it('renders properly', () => {
