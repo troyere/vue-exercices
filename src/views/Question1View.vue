@@ -6,9 +6,11 @@ const name = 'Bob';
 </script>
 
 <template>
-  <DefaultMain title="Question 1">
-    <template #title>
-      Question 1 : Afficher <strong>Hello {{ name }}</strong> en implémentant la fonction "greeter" de Question1Utils.ts :
+  <DefaultMain>
+    <template #title>Question 1</template>
+
+    <template #subTitle>
+      Afficher <strong>Hello {{ name }}</strong> en implémentant la fonction "greeter" de Question1Utils.ts :
     </template>
 
     <template #default>

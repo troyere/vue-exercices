@@ -3,5 +3,5 @@ import DefaultMain from '../components/DefaultMain.vue';
 </script>
 
 <template>
-  <DefaultMain>Welcome</DefaultMain>
+  <DefaultMain></DefaultMain>
 </template>

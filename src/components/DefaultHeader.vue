@@ -2,16 +2,10 @@
 import type { RouteLocationRaw } from 'vue-router';
 import { RouterLink } from 'vue-router';
 
-withDefaults(
-  defineProps<{
-    title: string;
-    subTitle?: string | undefined;
-    navConfig: { to: RouteLocationRaw; title: string }[];
-  }>(),
-  {
-    subTitle: undefined,
-  }
-);
+defineProps<{
+  title: string;
+  navConfig: { to: RouteLocationRaw; title: string }[];
+}>();
 </script>
 
 <template>
@@ -20,11 +14,9 @@ withDefaults(
 
     <div class="default-header__wrapper">
       <div class="default-header__greetings">
-        <h1 class="default-header__title">{{ title }}</h1>
-
-        <h3 v-if="subTitle || $slots.subTitle" class="default-header__sub-title">
-          <slot name="subTitle">{{ subTitle }}</slot>
-        </h3>
+        <RouterLink to="/">
+          <h1 class="default-header__title">{{ title }}</h1>
+        </RouterLink>
       </div>
 
       <nav class="default-header__nav">
@@ -73,7 +65,7 @@ withDefaults(
   }
 
   &__nav {
-    margin-top: 1rem;
+    width: 100%;
     display: flex;
     justify-content: center;
 
@@ -115,14 +107,6 @@ withDefaults(
     font-weight: 500;
     font-size: 2.6rem;
     white-space: nowrap;
-  }
-
-  &__sub-title {
-    font-size: 1.2rem;
-  }
-
-  &__title,
-  &__sub-title {
     text-align: center;
 
     @media (min-width: $medium-breakpoint) {

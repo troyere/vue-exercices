@@ -1,13 +1,24 @@
 <script setup lang="ts">
-defineProps<{
-  title?: string | undefined;
-}>();
+withDefaults(
+  defineProps<{
+    title?: string | undefined;
+    subTitle?: string | undefined;
+  }>(),
+  {
+    title: undefined,
+    subTitle: undefined,
+  }
+);
 </script>
 
 <template>
   <main class="default-main">
-    <p class="default-main__title">
+    <h3 v-if="title || $slots.title" class="default-main__title">
       <slot name="title">{{ title }}</slot>
+    </h3>
+
+    <p v-if="subTitle || $slots.subTitle" class="default-main__sub-title">
+      <slot name="subTitle">{{ subTitle }}</slot>
     </p>
 
     <div class="default-main__content">
@@ -20,16 +31,15 @@ defineProps<{
 .default-main {
   $medium-breakpoint: 1024px;
 
-  margin-top: 1rem;
+  margin-top: 1.25rem;
+  text-align: center;
 
   &__title {
     font-size: 1.1rem;
-    text-align: center;
   }
 
-  &__title + &__content {
-    margin-top: 1rem;
-    text-align: center;
+  &__content {
+    margin-top: 1.25rem;
   }
 }
 </style>
