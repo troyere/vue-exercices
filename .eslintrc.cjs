@@ -1,15 +1,162 @@
-/* eslint-env node */
-require('@rushstack/eslint-patch/modern-module-resolution')
+const commonTypeScriptSettings = {
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint'],
+  parserOptions: {
+    tsconfigRootDir: __dirname,
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+  },
+};
+
+const testFilesPatternList = ['./**/*.{test,spec}.ts'];
+
+const commonParserOptions = {
+  ecmaVersion: 2022,
+  sourceType: 'module',
+};
 
 module.exports = {
   root: true,
-  'extends': [
-    'eslint:recommended',
-    'plugin:vue/vue3-recommended',
-    '@vue/eslint-config-typescript',
-    '@vue/eslint-config-prettier/skip-formatting'
+  env: {
+    browser: true,
+    node: true,
+  },
+  parserOptions: commonParserOptions,
+  extends: ['eslint:recommended', 'plugin:prettier/recommended'],
+  rules: {
+    curly: 'error',
+    'no-console': [process.env.NODE_ENV === 'production' ? 'error' : 'warn', { allow: ['debug', 'warn', 'error'] }],
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
+    'sort-imports': 'error',
+  },
+  reportUnusedDisableDirectives: true,
+  overrides: [
+    {
+      files: ['./**/*.vue'],
+      extends: ['eslint:recommended', 'plugin:vue/vue3-recommended', 'plugin:prettier/recommended'],
+      parser: 'vue-eslint-parser',
+      parserOptions: {
+        ...commonParserOptions,
+        parser: '@typescript-eslint/parser',
+      },
+      rules: {
+        // Disable rule for SFC (already covered with vue/no-irregular-whitespace)
+        'no-irregular-whitespace': 'off',
+        curly: 'error',
+
+        // Uncategorized vue/* rules (disabled by default)
+        // 'vue/block-lang': ['error', { script: { lang: 'ts' } }],
+        'vue/block-tag-newline': 'error',
+        'vue/component-api-style': 'error',
+        'vue/component-name-in-template-casing': 'error',
+        'vue/component-options-name-casing': 'error',
+        'vue/component-tags-order': ['error', { order: ['script:not([setup])', 'script[setup]', 'template', 'style'] }],
+        'vue/custom-event-name-casing': 'error',
+        'vue/define-macros-order': 'error',
+        'vue/html-button-has-type': 'error',
+        'vue/html-comment-content-newline': 'error',
+        'vue/html-comment-content-spacing': 'error',
+        'vue/html-comment-indent': 'error',
+        'vue/match-component-file-name': 'error',
+        'vue/match-component-import-name': 'error',
+        // Useful for vue 2 components or defineComponents declarations
+        // 'vue/new-line-between-multi-line-property': 'error',
+        'vue/next-tick-style': 'error',
+        'vue/no-boolean-default': 'error',
+        'vue/no-duplicate-attr-inheritance': 'error',
+        'vue/no-empty-component-block': 'error',
+        'vue/no-multiple-objects-in-class': 'error',
+        'vue/no-potential-component-option-typo': 'error',
+        'vue/no-restricted-block': 'error',
+        'vue/no-restricted-call-after-await': 'error',
+        'vue/no-restricted-class': 'error',
+        'vue/no-restricted-component-options': 'error',
+        'vue/no-restricted-custom-event': 'error',
+        'vue/no-restricted-html-elements': 'error',
+        'vue/no-restricted-props': 'error',
+        'vue/no-restricted-static-attribute': 'error',
+        'vue/no-restricted-v-bind': 'error',
+        'vue/no-static-inline-styles': 'error',
+        'vue/no-template-target-blank': 'error',
+        'vue/no-this-in-before-route-enter': 'error',
+        'vue/no-undef-components': ['error', { ignorePatterns: ['RouterView', 'RouterLink'] }],
+        'vue/no-undef-properties': 'error',
+        'vue/no-unsupported-features': ['error', { version: '^3.2.0' }],
+        'vue/no-unused-properties': 'error',
+        'vue/no-unused-refs': 'error',
+        'vue/no-useless-mustaches': 'error',
+        'vue/no-useless-v-bind': 'error',
+        'vue/no-v-text': 'error',
+        'vue/padding-line-between-blocks': 'error',
+        'vue/prefer-prop-type-boolean-first': 'error',
+        'vue/prefer-separate-static-class': 'error',
+        'vue/prefer-true-attribute-shorthand': 'error',
+        'vue/require-direct-export': 'error',
+        'vue/require-emit-validator': 'error',
+        'vue/require-expose': 'error',
+        'vue/require-name-property': 'error',
+        'vue/static-class-names-order': 'error',
+        'vue/v-for-delimiter-style': 'error',
+        'vue/v-on-function-call': 'error',
+
+        // Extension rules
+        'vue/array-bracket-newline': 'error',
+        'vue/array-bracket-spacing': 'error',
+        'vue/arrow-spacing': 'error',
+        'vue/block-spacing': 'error',
+        'vue/brace-style': 'error',
+        'vue/camelcase': 'error',
+        'vue/comma-dangle': ['error', 'always-multiline'],
+        'vue/comma-spacing': 'error',
+        'vue/comma-style': 'error',
+        'vue/dot-location': 'error',
+        'vue/dot-notation': 'error',
+        'vue/eqeqeq': 'error',
+        'vue/func-call-spacing': 'error',
+        'vue/key-spacing': 'error',
+        'vue/keyword-spacing': 'error',
+        'vue/no-constant-condition': 'error',
+        'vue/no-empty-pattern': 'error',
+        'vue/no-extra-parens': ['error', 'all', { nestedBinaryExpressions: false }],
+        'vue/no-irregular-whitespace': [
+          'error',
+          {
+            skipHTMLAttributeValues: true,
+            skipHTMLTextContents: true,
+          },
+        ],
+        'vue/no-loss-of-precision': 'error',
+        'vue/no-restricted-syntax': 'error',
+        'vue/no-sparse-arrays': 'error',
+        'vue/no-useless-concat': 'error',
+        'vue/object-curly-newline': 'error',
+        'vue/object-curly-spacing': ['error', 'always'],
+        'vue/object-property-newline': ['error', { allowAllPropertiesOnSameLine: true }],
+        'vue/object-shorthand': 'error',
+        'vue/operator-linebreak': 'error',
+        'vue/prefer-template': 'error',
+        'vue/quote-props': ['error', 'as-needed'],
+        'vue/space-in-parens': 'error',
+        'vue/space-infix-ops': 'error',
+        'vue/space-unary-ops': 'error',
+        'vue/template-curly-spacing': 'error',
+      },
+    },
+    {
+      files: ['./**/*.ts'],
+      ...commonTypeScriptSettings,
+      extends: [
+        'eslint:recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:@typescript-eslint/recommended-requiring-type-checking',
+        'plugin:@typescript-eslint/strict',
+        'plugin:prettier/recommended',
+      ],
+      excludedFiles: [...testFilesPatternList],
+    },
+    {
+      files: testFilesPatternList,
+      ...commonTypeScriptSettings,
+      extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
+    },
   ],
-  parserOptions: {
-    ecmaVersion: 'latest'
-  }
-}
+};

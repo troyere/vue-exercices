@@ -1,28 +1,22 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
-import type { RouteLocationRaw } from 'vue-router'
+import type { RouteLocationRaw } from 'vue-router';
+import { RouterLink } from 'vue-router';
 
 withDefaults(
   defineProps<{
-    title: string
-    subTitle?: string | undefined
-    navConfig: { to: RouteLocationRaw; title: string }[]
+    title: string;
+    subTitle?: string | undefined;
+    navConfig: { to: RouteLocationRaw; title: string }[];
   }>(),
   {
-    subTitle: undefined
+    subTitle: undefined,
   }
-)
+);
 </script>
 
 <template>
   <header class="default-header">
-    <img
-      alt="Vue logo"
-      class="default-header__logo"
-      src="@/assets/logo.svg"
-      width="125"
-      height="125"
-    />
+    <img alt="Vue logo" class="default-header__logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="default-header__wrapper">
       <div class="default-header__greetings">
@@ -34,12 +28,7 @@ withDefaults(
       </div>
 
       <nav class="default-header__nav">
-        <RouterLink
-          v-for="navItem in navConfig"
-          :key="navItem.title"
-          class="default-header__nav-item"
-          :to="navItem.to"
-        >
+        <RouterLink v-for="navItem in navConfig" :key="navItem.title" class="default-header__nav-item" :to="navItem.to">
           {{ navItem.title }}
         </RouterLink>
       </nav>
