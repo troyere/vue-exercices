@@ -2,6 +2,12 @@
 
 Réunit les exercices pratiques dédiés aux entretiens Vue.
 
+[Faire les exercices sur StackBlitz](https://stackblitz.com/edit/vue-exercices)
+
+[Faire les anciens exercices sur CodeSandbox](https://codesandbox.io/s/vue-test-ylgnk?file=/src/App.vue)
+
+[Voir les questions](./QUESTIONS.md)
+
 ## Project Setup
 
 ```sh
