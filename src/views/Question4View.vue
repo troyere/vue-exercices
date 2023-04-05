@@ -8,7 +8,7 @@ import Question4Time from '../components/Question4/Question4Time.vue';
     <template #title>Question 4</template>
 
     <template #subTitle>
-      Simplifier le code de <strong>Question4Time.vue</strong> affichant le numéro de la semaine&#160;:
+      Remanier le code de <strong>Question4Time.vue</strong> en utilisant une "async" function&#160;:
     </template>
 
     <template #default>
