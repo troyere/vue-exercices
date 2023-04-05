@@ -7,7 +7,7 @@ import Question2Form from '../components/Question2/Question2Form.vue';
   <DefaultMain>
     <template #title>Question 2</template>
 
-    <template #subTitle>Comment simplifier le code du composant Question2Form.vue&#160;?</template>
+    <template #subTitle>Comment simplifier le composant <strong>Question2Form.vue</strong>&#160;?</template>
 
     <template #default>
       <Question2Form />
