@@ -12,5 +12,5 @@ const greeting = computed<string>(() => {
 </script>
 
 <template>
-  <p>{{ greeting }}</p>
+  <p class="question-1-hello">{{ greeting }}</p>
 </template>

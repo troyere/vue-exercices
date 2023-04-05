@@ -9,9 +9,9 @@ const onInput = (event: InputEvent): void => {
 </script>
 
 <template>
-  <form>
-    <input :model-value="text" @input="onInput" />
+  <form class="question-2-form">
+    <input :value="text" @input="onInput" />
 
-    <p class="typed-text"><em>Vous avez écrit :</em> {{ text }}</p>
+    <p><em>Vous avez écrit&#160;: </em>{{ text }}</p>
   </form>
 </template>

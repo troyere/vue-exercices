@@ -10,7 +10,7 @@ const name = 'Bob';
     <template #title>Question 1</template>
 
     <template #subTitle>
-      Afficher <strong>Hello {{ name }}</strong> en implémentant la fonction "greeter" de Question1Utils.ts :
+      Afficher <strong>Hello {{ name }}</strong> en implémentant la fonction "greeter" de Question1Utils.ts&#160;:
     </template>
 
     <template #default>
