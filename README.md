@@ -8,7 +8,15 @@ Réunit les exercices pratiques dédiés aux entretiens Vue.
 
 [Voir les questions](./QUESTIONS.md)
 
-## Project Setup
+## Remise à zéro des exercices 
+
+![discard](https://github.alptis.local/storage/user/23/files/5b05d4d2-0ce8-420d-ac76-c631859b7551)
+
+## Exécuter des commandes `pnpm` sur StackBlitz
+
+![pnpm-stackblitz](https://github.alptis.local/storage/user/23/files/5721b948-37d4-4c12-9395-61441f511505)
+
+## Commandes `pnpm`
 
 ```sh
 pnpm install
