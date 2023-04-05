@@ -2,12 +2,16 @@
 import { computed } from 'vue';
 import { greeter } from './Question1Utils';
 
+// eslint-disable-next-line
 const props = defineProps<{
   name: string;
 }>();
 
 const greeting = computed<string>(() => {
-  return greeter('Hello')(props.name);
+  // FIXME : décommenter cette ligne en n'oubliant pas de bien supprimer la ligne eslint
+  // return greeter('Hello')(props.name);
+
+  return props.name;
 });
 </script>
 

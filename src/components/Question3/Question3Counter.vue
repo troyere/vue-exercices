@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-
-const count = ref(0);
+// FIXME : corriger onClick
+let count = 0;
 
 const onClick = (): void => {
-  count.value += 1;
+  count += 1;
 };
 </script>
 
