@@ -1,4 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+/* eslint-disable */
 export const greeter = (greeting: string) => {
-  // FIXME : Corriger et implémenter greeter en n'oubliant pas de bien supprimer la ligne eslint
+  // TODO : Corriger et implémenter greeter
 };
+/* eslint-enable */

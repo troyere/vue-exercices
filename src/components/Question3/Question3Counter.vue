@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// FIXME : corriger onClick
+// TODO : corriger onClick
 let count = 0;
 
 const onClick = (): void => {
