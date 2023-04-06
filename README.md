@@ -6,8 +6,6 @@ Réunit les exercices pratiques dédiés aux entretiens Vue.
 
 [Faire les anciens exercices sur CodeSandbox](https://codesandbox.io/s/vue-test-ylgnk?file=/src/App.vue)
 
-[Voir les questions](./QUESTIONS.md)
-
 ## Remise à zéro des exercices 
 
 ![discard](https://github.alptis.local/storage/user/23/files/5b05d4d2-0ce8-420d-ac76-c631859b7551)
